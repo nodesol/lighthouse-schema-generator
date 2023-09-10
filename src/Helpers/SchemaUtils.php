@@ -1,6 +1,6 @@
 <?php
 
-namespace DmLa\LighthouseSchemaGenerator\Helpers;
+namespace LightSpeak\LighthouseSchemaGenerator\Helpers;
 
 use Illuminate\Support\Facades\Schema;
 

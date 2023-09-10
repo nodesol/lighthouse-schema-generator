@@ -1,28 +1,17 @@
 <?php
 
-namespace DmLa\LighthouseSchemaGenerator\Parsers;
+namespace LightSpeak\LighthouseSchemaGenerator\Parsers;
 
 use Exception;
 use ReflectionMethod;
 use Illuminate\Database\Eloquent\Model;
-use DmLa\LighthouseSchemaGenerator\Helpers\Reflection;
+use LightSpeak\LighthouseSchemaGenerator\Helpers\Reflection;
 
 class ModelParser
 {
-    /** @var Reflection  */
-    protected $reflection;
 
-    /** @var ColumnsParser */
-    private $columnsParser;
-
-    /** @var MethodParser */
-    private $methodParser;
-
-    public function __construct(Reflection $reflection, MethodParser $methodParser, ColumnsParser $columnsParser)
+    public function __construct(protected Reflection $reflection, private readonly MethodParser $methodParser, private readonly ColumnsParser $columnsParser)
     {
-        $this->reflection = $reflection;
-        $this->methodParser = $methodParser;
-        $this->columnsParser = $columnsParser;
     }
 
     /**
@@ -31,7 +20,7 @@ class ModelParser
      */
     public function parse(Model $model): string
     {
-        $data = '';
+        $data      = '';
         $reflector = $this->reflection->reflectionObject($model);
 
         $data .= "type {$reflector->getShortName()} {\n";
@@ -42,7 +31,7 @@ class ModelParser
         foreach ($publicMethods as $reflectionMethod) {
             try {
                 $data .= $this->methodParser->parse($model, $reflectionMethod);
-            } catch (Exception $exception) {
+            } catch (Exception) {
                 continue;
             }
         }

@@ -1,11 +1,11 @@
 <?php
 
-namespace DmLa\LighthouseSchemaGenerator\Parsers;
+namespace LightSpeak\LighthouseSchemaGenerator\Parsers;
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\ConnectionInterface;
-use DmLa\LighthouseSchemaGenerator\Helpers\SchemaUtils;
+use LightSpeak\LighthouseSchemaGenerator\Helpers\SchemaUtils;
 
 class ColumnsParser
 {
@@ -17,70 +17,14 @@ class ColumnsParser
     {
         $data = '';
 
-        $table = $model->getTable();
-        $columns = SchemaUtils::getColumnListing($table);
+        $table      = $model->getTable();
+        $columns    = SchemaUtils::getColumnListing($table);
         $connection = $model->getConnection();
-        $types = $this->getTypes();
+        $types      = $this->getTypes();
 
         foreach ($columns as $column) {
             $data .= $this->processColumn($connection, $table, $column, $types);
         }
-
-        return $data;
-    }
-
-    /**
-     * @param ConnectionInterface $connection
-     * @param string $table
-     * @param string $column
-     * @param array $types
-     * @return string
-     */
-    protected function processColumn(ConnectionInterface $connection, string $table, string $column, array $types): string
-    {
-        $data = '';
-        /** @var Connection $connection */
-        $columnData = $connection->getDoctrineColumn($table, $column);
-        $data .= "    {$column}: ";
-
-        $columnType = SchemaUtils::getColumnType($table, $column);
-
-        switch (true) {
-            case in_array($columnType, $types['intTypes']) && $columnData->getAutoincrement():
-                $data .= 'ID';
-                break;
-            case in_array($columnType, $types['intTypes']):
-                $data .= 'Int';
-                break;
-            case in_array($columnType, $types['stringTypes']):
-                $data .= 'String';
-                break;
-            case $columnType === 'datetime':
-            case in_array($columnType, $types['timeTypes']):
-                $data .= 'DateTime';
-                break;
-            case $columnType === 'date':
-                $data .= 'Date';
-                break;
-            case $columnType === 'datetimetz':
-                $data .= 'DateTimeTz';
-                break;
-            case in_array($columnType, $types['booleanTypes']):
-                $data .= 'Boolean';
-                break;
-            case in_array($columnType, $types['floatTypes']):
-                $data .= 'Float';
-                break;
-            case in_array($columnType, $types['jsonTypes']):
-                $data .= 'Json';
-                break;
-        }
-
-        if ($columnData->getNotnull()) {
-            $data .= '!';
-        }
-
-        $data .= "\n";
 
         return $data;
     }
@@ -146,5 +90,66 @@ class ColumnsParser
             'timeTypes',
             'floatTypes'
         );
+    }
+
+    /**
+     * @param ConnectionInterface $connection
+     * @param string $table
+     * @param string $column
+     * @param array $types
+     * @return string
+     */
+    protected function processColumn(
+        ConnectionInterface $connection,
+        string              $table,
+        string              $column,
+        array               $types
+    ): string
+    {
+        $data = '';
+        /** @var Connection $connection */
+        $columnData = $connection->getDoctrineColumn($table, $column);
+        $data       .= "    $column: ";
+
+        $columnType = SchemaUtils::getColumnType($table, $column);
+
+        switch (true) {
+            case in_array($columnType, $types['intTypes']) && $columnData->getAutoincrement():
+                $data .= 'ID';
+                break;
+            case in_array($columnType, $types['intTypes']):
+                $data .= 'Int';
+                break;
+            case in_array($columnType, $types['stringTypes']):
+                $data .= 'String';
+                break;
+            case $columnType === 'datetime':
+            case in_array($columnType, $types['timeTypes']):
+                $data .= 'DateTime';
+                break;
+            case $columnType === 'date':
+                $data .= 'Date';
+                break;
+            case $columnType === 'datetimetz':
+                $data .= 'DateTimeTz';
+                break;
+            case in_array($columnType, $types['booleanTypes']):
+                $data .= 'Boolean';
+                break;
+            case in_array($columnType, $types['floatTypes']):
+                $data .= 'Float';
+                break;
+            case in_array($columnType, $types['jsonTypes']):
+                $data .= 'Json';
+                break;
+        }
+
+        if ($columnData->getNotnull()) {
+            $data .= '!';
+        }
+
+        $data .= "\n";
+
+        return $data;
     }
 }

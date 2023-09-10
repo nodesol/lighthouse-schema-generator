@@ -1,6 +1,6 @@
 <?php
 
-namespace DmLa\LighthouseSchemaGenerator\Support;
+namespace LightSpeak\LighthouseSchemaGenerator\Support;
 
 class DirectiveGenerator
 {

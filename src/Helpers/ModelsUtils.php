@@ -1,30 +1,28 @@
 <?php
 
-namespace DmLa\LighthouseSchemaGenerator\Helpers;
+namespace LightSpeak\LighthouseSchemaGenerator\Helpers;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use ReflectionException;
 use Symfony\Component\Finder\SplFileInfo;
 
 class ModelsUtils
 {
-    /** @var Reflection  */
-    private $reflection;
-
-    public function __construct(Reflection $reflection)
+    public function __construct(private readonly Reflection $reflection)
     {
-        $this->reflection = $reflection;
     }
 
     /**
      * @param array $files
      * @param string $path models path
      * @return Collection
+     * @throws ReflectionException
      */
     public function getModels(array $files, string $path = ''): Collection
     {
         $models = collect($files)->map(function (SplFileInfo $file) use ($path) {
-            $path = $path ?  $path . '/' . $file->getRelativePathName() : $file->getRelativePathName();
+            $path = $path ? $path . '/' . $file->getRelativePathName() : $file->getRelativePathName();
 
             return $this->getNamespace($path);
         })->filter(function (string $class) {
@@ -32,7 +30,7 @@ class ModelsUtils
 
             if (class_exists($class)) {
                 $reflection = $this->reflection->reflectionClass($class);
-                $valid = $reflection->isSubclassOf(Model::class) && (! $reflection->isAbstract());
+                $valid      = $reflection->isSubclassOf(Model::class) && (!$reflection->isAbstract());
             }
 
             return $valid;

@@ -1,6 +1,6 @@
 <?php
 
-namespace DmLa\LighthouseSchemaGenerator\Helpers;
+namespace LightSpeak\LighthouseSchemaGenerator\Helpers;
 
 use ReflectionType;
 use ReflectionClass;
@@ -11,11 +11,11 @@ use ReflectionException;
 class Reflection
 {
     /**
-     * @param class-string|object $objectOrClass
+     * @param object|class-string $objectOrClass
      * @return ReflectionClass
      * @throws ReflectionException
      */
-    public function reflectionClass($objectOrClass): ReflectionClass
+    public function reflectionClass(object|string $objectOrClass): ReflectionClass
     {
         return (new ReflectionClass($objectOrClass));
     }

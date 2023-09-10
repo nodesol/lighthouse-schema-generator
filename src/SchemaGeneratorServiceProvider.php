@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace DmLa\LighthouseSchemaGenerator;
+namespace LightSpeak\LighthouseSchemaGenerator;
 
+use Doctrine\DBAL\Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
-use DmLa\LighthouseSchemaGenerator\Commands\MakeGraphqlSchemaCommand;
+use LightSpeak\LighthouseSchemaGenerator\Commands\MakeGraphqlSchemaCommand;
 
 class SchemaGeneratorServiceProvider extends ServiceProvider
 {
@@ -14,10 +15,23 @@ class SchemaGeneratorServiceProvider extends ServiceProvider
      * Register any application services.
      *
      * @return void
+     * @throws Exception
      */
-    public function register()
+    public function register(): void
     {
         $this->registerDoctrineTypeMapping();
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function registerDoctrineTypeMapping(): void
+    {
+        if (!defined('__PHPSTAN_RUNNING__')) {
+            DB::getDoctrineSchemaManager()
+                ->getDatabasePlatform()
+                ->registerDoctrineTypeMapping('enum', 'string');
+        }
     }
 
     /**
@@ -25,20 +39,12 @@ class SchemaGeneratorServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
                 MakeGraphqlSchemaCommand::class,
             ]);
-        }
-    }
-
-    private function registerDoctrineTypeMapping(): void
-    {
-        //TODO: Hotfix ignore phpstan error
-        if (! defined('__PHPSTAN_RUNNING__')) {
-            DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
         }
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace DmLa\LighthouseSchemaGenerator\Support;
+namespace LightSpeak\LighthouseSchemaGenerator\Support;
 
-use DmLa\LighthouseSchemaGenerator\Support\Contracts\DirectiveGeneratorInterface;
+use LightSpeak\LighthouseSchemaGenerator\Support\Contracts\DirectiveGeneratorInterface;
 
 class SingleRelationDirectiveGenerator implements DirectiveGeneratorInterface
 {
@@ -14,6 +14,6 @@ class SingleRelationDirectiveGenerator implements DirectiveGeneratorInterface
      */
     public static function generate(string $fieldName, string $classOrColumnName, string $relationName = ''): string
     {
-        return "    {$fieldName}: $classOrColumnName @{$relationName}\n";
+        return "    $fieldName: $classOrColumnName @$relationName\n";
     }
 }

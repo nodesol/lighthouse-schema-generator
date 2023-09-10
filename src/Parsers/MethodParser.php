@@ -1,24 +1,20 @@
 <?php
 
-namespace DmLa\LighthouseSchemaGenerator\Parsers;
+namespace LightSpeak\LighthouseSchemaGenerator\Parsers;
 
 use ReflectionMethod;
 use ReflectionException;
 use ReflectionNamedType;
 use Illuminate\Database\Eloquent\Model;
-use DmLa\LighthouseSchemaGenerator\Helpers\Reflection;
+use LightSpeak\LighthouseSchemaGenerator\Helpers\Reflection;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use DmLa\LighthouseSchemaGenerator\Support\DirectiveGenerator;
-use ReflectionType;
+use LightSpeak\LighthouseSchemaGenerator\Support\DirectiveGenerator;
 
 class MethodParser
 {
-    /** @var Reflection */
-    private $reflection;
 
-    public function __construct(Reflection $reflection)
+    public function __construct(private readonly Reflection $reflection)
     {
-        $this->reflection = $reflection;
     }
 
     /**
@@ -34,13 +30,13 @@ class MethodParser
         /** @var ReflectionNamedType $returnType */
         $returnType = $this->reflection->getReturnType($method);
         /** @phpstan-ignore-next-line */
-        if ($returnType && (! $returnType->isBuiltin()) && $method->hasReturnType()) {
+        if ($returnType && (!$returnType->isBuiltin()) && $method->hasReturnType()) {
             $methodName = $method->getName();
-            $relation = $this->reflection->reflectionClass($returnType->getName());
+            $relation   = $this->reflection->reflectionClass($returnType->getName());
             if ($method->getNumberOfParameters() == 0 && $relation->isSubclassOf(Relation::class)) {
-                $relatedClassName = class_basename($method->invoke($model)->getRelated());
+                $relatedClassName  = class_basename($method->invoke($model)->getRelated());
                 $relationClassName = $relation->getShortName();
-                $data .= DirectiveGenerator::generate($methodName, $relatedClassName, $relationClassName);
+                $data              .= DirectiveGenerator::generate($methodName, $relatedClassName, $relationClassName);
             }
         }
 
