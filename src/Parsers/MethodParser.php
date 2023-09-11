@@ -30,7 +30,7 @@ class MethodParser
         /** @var ReflectionNamedType $returnType */
         $returnType = $this->reflection->getReturnType($method);
         /** @phpstan-ignore-next-line */
-        if ($returnType && (!$returnType->isBuiltin()) && $method->hasReturnType()) {
+        if ($returnType && method_exists($returnType, 'isBuiltin') && (!$returnType->isBuiltin()) && $method->hasReturnType()) {
             $methodName = $method->getName();
             $relation   = $this->reflection->reflectionClass($returnType->getName());
             if ($method->getNumberOfParameters() == 0 && $relation->isSubclassOf(Relation::class)) {
