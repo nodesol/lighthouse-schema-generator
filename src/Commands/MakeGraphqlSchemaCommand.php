@@ -53,7 +53,7 @@ class MakeGraphqlSchemaCommand extends Command
 
             $models->each(function (Model $model) use ($schemaFolder, $force, $fileUtils, $modelParser) {
                 $schemaFileName = $fileUtils->generateFileName(class_basename($model));
-                $schemaPath     = "{$schemaFolder}/{$schemaFileName}";
+                $schemaPath     = "{$schemaFolder}/models/{$schemaFileName}";
 
                 if (!$force && $fileUtils->exists($schemaPath)) {
                     $question = "The {$schemaFileName} file exists. Do you want to rewrite file?";
