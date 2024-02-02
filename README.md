@@ -12,7 +12,9 @@ CONTENTS OF THIS FILE
   UPDATES
 ------------
 
-21.12.2021 - added generation graphql schemas (<b>ONLY TYPES</b>) based on <a href="https://github.com/laravel/laravel">Laravel</a> models and tables.
+2021-12-21 - added generation graphql schemas (<b>ONLY TYPES</b>) based on <a href="https://github.com/laravel/laravel">Laravel</a> models and tables.
+2023-09-10 - upgraded to lighthouse 6.16.
+2024-02-03 - Added initial support for generating (<b>QUERIES & MUTATIONS</b>).
  
   DESCRIPTION
 ------------
