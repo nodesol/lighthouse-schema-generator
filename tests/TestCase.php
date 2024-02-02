@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LightSpeak\LighthouseSchemaGenerator\Tests;
+namespace Nodesol\LighthouseSchemaGenerator\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use LightSpeak\LighthouseSchemaGenerator\SchemaGeneratorServiceProvider;
+use Nodesol\LighthouseSchemaGenerator\SchemaGeneratorServiceProvider;
 
 class TestCase extends BaseTestCase
 {

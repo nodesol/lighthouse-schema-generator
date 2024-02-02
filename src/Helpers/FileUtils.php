@@ -1,6 +1,6 @@
 <?php
 
-namespace LightSpeak\LighthouseSchemaGenerator\Helpers;
+namespace Nodesol\LighthouseSchemaGenerator\Helpers;
 
 use Safe\Exceptions\FilesystemException;
 use Symfony\Component\Finder\SplFileInfo;

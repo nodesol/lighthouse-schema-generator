@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace LightSpeak\LighthouseSchemaGenerator\Commands;
+namespace Nodesol\LighthouseSchemaGenerator\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
 use ReflectionException;
 use Safe\Exceptions\FilesystemException;
-use LightSpeak\LighthouseSchemaGenerator\Helpers\FileUtils;
-use LightSpeak\LighthouseSchemaGenerator\Parsers\ModelParser;
-use LightSpeak\LighthouseSchemaGenerator\Helpers\ModelsUtils;
+use Nodesol\LighthouseSchemaGenerator\Helpers\FileUtils;
+use Nodesol\LighthouseSchemaGenerator\Parsers\ModelParser;
+use Nodesol\LighthouseSchemaGenerator\Helpers\ModelsUtils;
 
 class MakeGraphqlSchemaCommand extends Command
 {

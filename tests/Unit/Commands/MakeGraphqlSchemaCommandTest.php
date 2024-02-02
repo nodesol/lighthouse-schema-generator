@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LightSpeak\LighthouseSchemaGenerator\Tests\Unit\Commands;
+namespace Nodesol\LighthouseSchemaGenerator\Tests\Unit\Commands;
 
 use Artisan;
-use LightSpeak\LighthouseSchemaGenerator\Helpers\FileUtils;
-use LightSpeak\LighthouseSchemaGenerator\Helpers\ModelsUtils;
-use LightSpeak\LighthouseSchemaGenerator\Tests\TestCase;
+use Nodesol\LighthouseSchemaGenerator\Helpers\FileUtils;
+use Nodesol\LighthouseSchemaGenerator\Helpers\ModelsUtils;
+use Nodesol\LighthouseSchemaGenerator\Tests\TestCase;
 use Mockery\MockInterface;
 
 class MakeGraphqlSchemaCommandTest extends TestCase

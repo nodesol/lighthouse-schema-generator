@@ -1,6 +1,6 @@
 <?php
 
-namespace LightSpeak\LighthouseSchemaGenerator\Support\Contracts;
+namespace Nodesol\LighthouseSchemaGenerator\Support\Contracts;
 
 interface DirectiveGeneratorInterface
 {

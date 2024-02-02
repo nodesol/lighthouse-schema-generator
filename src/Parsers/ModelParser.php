@@ -1,11 +1,11 @@
 <?php
 
-namespace LightSpeak\LighthouseSchemaGenerator\Parsers;
+namespace Nodesol\LighthouseSchemaGenerator\Parsers;
 
 use Exception;
 use ReflectionMethod;
 use Illuminate\Database\Eloquent\Model;
-use LightSpeak\LighthouseSchemaGenerator\Helpers\Reflection;
+use Nodesol\LighthouseSchemaGenerator\Helpers\Reflection;
 
 class ModelParser
 {

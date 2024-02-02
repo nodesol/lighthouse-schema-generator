@@ -1,11 +1,11 @@
 <?php
 
-namespace LightSpeak\LighthouseSchemaGenerator\Parsers;
+namespace Nodesol\LighthouseSchemaGenerator\Parsers;
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\ConnectionInterface;
-use LightSpeak\LighthouseSchemaGenerator\Helpers\SchemaUtils;
+use Nodesol\LighthouseSchemaGenerator\Helpers\SchemaUtils;
 
 class ColumnsParser
 {

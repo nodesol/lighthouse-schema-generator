@@ -1,6 +1,6 @@
 <?php
 
-namespace LightSpeak\LighthouseSchemaGenerator\Support;
+namespace Nodesol\LighthouseSchemaGenerator\Support;
 
 class RelationTypes
 {

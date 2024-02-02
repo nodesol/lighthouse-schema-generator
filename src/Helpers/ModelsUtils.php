@@ -1,6 +1,6 @@
 <?php
 
-namespace LightSpeak\LighthouseSchemaGenerator\Helpers;
+namespace Nodesol\LighthouseSchemaGenerator\Helpers;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;

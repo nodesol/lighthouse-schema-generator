@@ -1,6 +1,6 @@
 <?php
 
-namespace LightSpeak\LighthouseSchemaGenerator\Helpers;
+namespace Nodesol\LighthouseSchemaGenerator\Helpers;
 
 use ReflectionType;
 use ReflectionClass;

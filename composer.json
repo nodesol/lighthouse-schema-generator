@@ -22,18 +22,18 @@
     },
     "autoload": {
         "psr-4": {
-            "LightSpeak\\LighthouseSchemaGenerator\\": "src/"
+            "Nodesol\\LighthouseSchemaGenerator\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DmLa\\LighthouseSchemaGenerator\\Tests\\": "tests"
+            "Nodesol\\LighthouseSchemaGenerator\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LightSpeak\\LighthouseSchemaGenerator\\SchemaGeneratorServiceProvider"
+                "Nodesol\\LighthouseSchemaGenerator\\SchemaGeneratorServiceProvider"
             ]
         }
     },

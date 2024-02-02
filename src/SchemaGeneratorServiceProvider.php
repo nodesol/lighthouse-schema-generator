@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LightSpeak\LighthouseSchemaGenerator;
+namespace Nodesol\LighthouseSchemaGenerator;
 
 use Doctrine\DBAL\Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
-use LightSpeak\LighthouseSchemaGenerator\Commands\MakeGraphqlSchemaCommand;
+use Nodesol\LighthouseSchemaGenerator\Commands\MakeGraphqlSchemaCommand;
 
 class SchemaGeneratorServiceProvider extends ServiceProvider
 {

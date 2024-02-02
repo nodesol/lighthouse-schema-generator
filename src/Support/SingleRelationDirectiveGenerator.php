@@ -1,8 +1,8 @@
 <?php
 
-namespace LightSpeak\LighthouseSchemaGenerator\Support;
+namespace Nodesol\LighthouseSchemaGenerator\Support;
 
-use LightSpeak\LighthouseSchemaGenerator\Support\Contracts\DirectiveGeneratorInterface;
+use Nodesol\LighthouseSchemaGenerator\Support\Contracts\DirectiveGeneratorInterface;
 
 class SingleRelationDirectiveGenerator implements DirectiveGeneratorInterface
 {
