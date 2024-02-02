@@ -29,7 +29,7 @@ Lighthouse schema generator is a package for generation graphql schemas made as 
 ------------
 
 1. <b>Set up</b> database connection in .env configuration file.
-2. Run: composer require nodesol/lighthouse-schema-generator
+2. Run: <pre>composer require nodesol/lighthouse-schema-generator</pre>
 
  USAGE
 ------------
