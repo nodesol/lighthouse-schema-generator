@@ -1,5 +1,5 @@
 {
-    "name": "light-speak/lighthouse-schema-generator",
+    "name": "nodesol/lighthouse-schema-generator",
     "keywords": [
         "laravel",
         "lighthouse-schema-generator"
@@ -7,16 +7,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Dima Yefremov",
-            "email": "efremov2293@gmail.com"
-        },
-        {
-            "name": "Illia Radchenko",
-            "email": "er.illia.radchenko@gmail.com"
-        },
-        {
-            "name": "linty",
-            "email": "linty@light-speak.com"
+            "name": "Amer Chaudhary",
+            "email": "amer@nodesol.com"
         }
     ],
     "require": {
