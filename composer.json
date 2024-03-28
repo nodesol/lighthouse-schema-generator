@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">= 8.2",
-        "nuwave/lighthouse": "^6.16",
+        "nuwave/lighthouse": "^6.36",
         "doctrine/dbal": "^4.0"
     },
     "require-dev": {
