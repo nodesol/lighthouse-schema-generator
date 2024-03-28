@@ -1,5 +1,5 @@
 {
-    "name": "nodesol/lighthouse-schema-generator",
+    "name": "meharwaheed/lighthouse-schema-generator",
     "keywords": [
         "laravel",
         "lighthouse-schema-generator"
@@ -7,8 +7,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Amer Chaudhary",
-            "email": "amer@nodesol.com"
+            "name": "Abdul Waheed",
+            "email": "waheedbajeed@gmail.com"
         }
     ],
     "require": {
