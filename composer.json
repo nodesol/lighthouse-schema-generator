@@ -14,7 +14,7 @@
     "require": {
         "php": ">= 8.2",
         "nuwave/lighthouse": "^6.16",
-        "doctrine/dbal": "^3.9"
+        "doctrine/dbal": "^4.0"
     },
     "require-dev": {
         "orchestra/testbench": "^8.10.1",
