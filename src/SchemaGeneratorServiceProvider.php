@@ -8,7 +8,7 @@ use Doctrine\DBAL\Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Nodesol\LighthouseSchemaGenerator\Commands\MakeGraphqlSchemaCommand;
-use Illuminate\Support\Facades\Schema;
+
 class SchemaGeneratorServiceProvider extends ServiceProvider
 {
     /**
@@ -28,13 +28,10 @@ class SchemaGeneratorServiceProvider extends ServiceProvider
     private function registerDoctrineTypeMapping(): void
     {
         if (!defined('__PHPSTAN_RUNNING__')) {
-            // DB::getDoctrineSchemaManager()
-            //     ->getDatabasePlatform()
-            //     ->registerDoctrineTypeMapping('enum', 'string');
-            Schema::getConnection()
-    ->getDoctrineSchemaManager()
-    ->getDatabasePlatform()
-    ->registerDoctrineTypeMapping('enum', 'string');
+            DB::getDoctrineSchemaManager()
+                ->getDatabasePlatform()
+                ->registerDoctrineTypeMapping('enum', 'string');
+
         }
     }
 
