@@ -61,6 +61,7 @@ class ColumnsParser
             'string',
             'ascii_string',
             'array',
+            'varchar'
         ];
 
         $floatTypes = [
