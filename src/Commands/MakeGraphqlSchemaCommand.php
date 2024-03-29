@@ -43,6 +43,10 @@ class MakeGraphqlSchemaCommand extends Command
         $modelsPath = $this->getModelsPathFromOption();
         $path       = $fileUtils->exists(app_path($modelsPath)) ? $modelsPath : false;
 
+        if (!$path) {
+            mkdir(app_path($modelsPath), 0777, true);
+        }
+
         if ($path !== false) {
             $files        = $fileUtils->getAllFiles($path);
             $models       = $modelsUtils->getModels($files, $path);
