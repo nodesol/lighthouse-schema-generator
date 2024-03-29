@@ -44,7 +44,7 @@ class MakeGraphqlSchemaCommand extends Command
         $path       = $fileUtils->exists(app_path($modelsPath)) ? $modelsPath : false;
 
         if (!$path) {
-            mkdir(app_path($modelsPath), 0777, true);
+            mkdir(base_path() . '/graphql/models', 0777, true);
         }
 
         if ($path !== false) {
