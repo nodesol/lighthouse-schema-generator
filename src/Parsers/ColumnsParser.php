@@ -5,6 +5,7 @@ namespace Nodesol\LighthouseSchemaGenerator\Parsers;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\ConnectionInterface;
+use Illuminate\Support\Facades\Schema;
 use Nodesol\LighthouseSchemaGenerator\Helpers\SchemaUtils;
 
 class ColumnsParser
@@ -107,14 +108,16 @@ class ColumnsParser
     ): string
     {
         $data = '';
-        /** @var Connection $connection */
-        $columnData = $connection->getDoctrineColumn($table, $column);
+//        /** @var Connection $connection */
+//        $columnData = $connection->getDoctrineColumn($table, $column);
+
+        $columnData = collect(Schema::getColumns($table))->where('name', $column)->first();
         $data       .= "    $column: ";
 
         $columnType = SchemaUtils::getColumnType($table, $column);
 
         switch (true) {
-            case in_array($columnType, $types['intTypes']) && $columnData->getAutoincrement():
+            case in_array($columnType, $types['intTypes']) && $columnData['auto_increment']:
                 $data .= 'ID';
                 break;
             case in_array($columnType, $types['intTypes']):
@@ -144,7 +147,7 @@ class ColumnsParser
                 break;
         }
 
-        if ($columnData->getNotnull()) {
+        if (!$columnData['nullable']) {
             $data .= '!';
         }
 
