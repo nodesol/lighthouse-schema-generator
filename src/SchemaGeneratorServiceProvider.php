@@ -31,6 +31,7 @@ class SchemaGeneratorServiceProvider extends ServiceProvider
             DB::getDoctrineSchemaManager()
                 ->getDatabasePlatform()
                 ->registerDoctrineTypeMapping('enum', 'string');
+
         }
     }
 
