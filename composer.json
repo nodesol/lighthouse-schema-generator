@@ -1,5 +1,6 @@
 {
     "name": "meharwaheed/lighthouse-schema-generator",
+    "description": "Laravel GraphQL Schema Generator",
     "keywords": [
         "laravel",
         "lighthouse-schema-generator"
