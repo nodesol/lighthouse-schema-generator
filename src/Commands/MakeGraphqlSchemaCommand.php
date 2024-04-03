@@ -40,11 +40,9 @@ class MakeGraphqlSchemaCommand extends Command
      */
     public function handle(ModelsUtils $modelsUtils, FileUtils $fileUtils, ModelParser $modelParser): void
     {
-        $modelsPath = $this->getModelsPathFromOption();
-        $path       = $fileUtils->exists(app_path($modelsPath)) ? $modelsPath : false;
-
-        if (!$path) {
-            mkdir(base_path() . '/graphql/models', 0777, true);
+        $path = $this->getModelsPathFromOption();
+        if(!$fileUtils->exists(app_path($path))) {
+            mkdir(app_path($path));
         }
 
         if ($path !== false) {
