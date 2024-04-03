@@ -1,5 +1,5 @@
 {
-    "name": "meharwaheed/lighthouse-schema-generator",
+    "name": "nodesol/lighthouse-schema-generator",
     "description": "Laravel GraphQL Schema Generator",
     "keywords": [
         "laravel",
@@ -8,8 +8,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Abdul Waheed",
-            "email": "waheedbajeed@gmail.com"
+            "name": "Amer Chaudhary",
+            "email": "amer@nodesol.com"
         }
     ],
     "require": {
